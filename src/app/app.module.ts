@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
   declarations: [AppComponent],
   imports: [
     BrowserAnimationsModule,
-    CommonModule,
     AppRoutingModule,
     KoinfastModule,
     AuthModule,
@@ -24,7 +23,7 @@ import { CommonModule } from '@angular/common';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    SharedModule
+    // SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],
