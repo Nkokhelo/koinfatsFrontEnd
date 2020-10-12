@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 import { KoinfastComponent } from './koinfast.component';
 
-const routes: Routes = [{ path: '', component: KoinfastComponent }];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

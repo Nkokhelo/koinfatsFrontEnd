@@ -1,0 +1,40 @@
+* {
+  font-size: 14px;
+}
+.nav-item {
+  font-size: medium;
+  a {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    @media (min-with: 699px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .dropdown-item {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    @media (min-with: 699px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+.main {
+  background-color: #f1f4f9;
+}
+.inner-body {
+  overflow-y: scroll;
+}

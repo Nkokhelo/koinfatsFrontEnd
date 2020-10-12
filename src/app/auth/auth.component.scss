@@ -1,0 +1,14 @@
+.auth-body {
+  background-color: #2b4464;
+  height: 100vh;
+}
+
+.logo {
+  max-width: 100%;
+  img {
+    width: 50%;
+    @media (min-width: 500px) {
+      width: 30%;
+    }
+  }
+}

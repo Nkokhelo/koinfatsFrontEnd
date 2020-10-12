@@ -1,0 +1,19 @@
+.nav-item {
+  a {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    @media (min-with: 699px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    &.btn {
+      color: white;
+    }
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #2b4464;
+}

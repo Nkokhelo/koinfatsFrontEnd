@@ -1,10 +1,21 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   "prettier.semi": true,
   "cSpell.words": [
     "Koinfast",
+    "guads",
     "imgs",
+    "maxlength",
+    "minlength",
+    "toastr",
     "topheader"
-  ]
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "prettier.printWidth": 100
 }
