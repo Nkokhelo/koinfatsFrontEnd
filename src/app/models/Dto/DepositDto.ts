@@ -3,4 +3,6 @@ export class DepositDto{
   PackageId: number;
   DepositProf: File;
   InvestorId : number;
+  Id:number ;
+  State: string;
 }

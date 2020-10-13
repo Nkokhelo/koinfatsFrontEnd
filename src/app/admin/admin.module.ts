@@ -10,12 +10,14 @@ import { DepositsComponent } from './deposits/deposits.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminComponent, InvestorsComponent, InvestmentsComponent, HomeComponent, DepositsComponent],
   imports: [
     CommonModule, 
     AdminRoutingModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     ModalModule.forRoot(),

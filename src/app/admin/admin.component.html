@@ -17,7 +17,7 @@
               <a class="nav-link" routerLink="/admin/investors">Investors <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" routerLink="/admin/deposits">Deposits <span class="badge badge-pill badge-warning counter">{{ deposits }}</span></a>
+              <a class="nav-link" routerLink="/admin/deposits">Deposits <span *ngIf="deposits > 0" class="badge badge-pill badge-warning counter">{{ deposits }}</span></a>
             </li>
             <li class="nav-item dropdown" dropdown>
               <a class="nav-link dropdown-toggle dropdown-menu-right" dropdownToggle>{{ currentUser.userName}}</a>

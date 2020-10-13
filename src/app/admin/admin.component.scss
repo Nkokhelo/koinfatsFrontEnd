@@ -34,9 +34,14 @@
 }
 .main {
   background-color: #f1f4f9;
+  overflow-y: scroll;
+  // min-height: 100vh;
+  // max-height: 100vh;
+  height: 100vh;
 }
 .inner-body {
-  overflow-y: scroll;
+  // overflow-y: scroll;
+  min-height: 80%;
 }
 
 .badge.counter {

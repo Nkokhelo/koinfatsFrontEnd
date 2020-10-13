@@ -1,16 +1,16 @@
 import { investorTitle } from '../Enums/investorTitle';
 
 export class Investor {
-  Title: investorTitle;
-  Name: string;
-  Surname: string;
-  Phone: string;
-  Country: string;
-  City: string;
-  AccNo: string;
-  Bank: string;
-  Email: string;
-  Password: string;
-  ConfirmPassword: string;
-  SponsorId: number;
+  title: investorTitle;
+  name: string;
+  surname: string;
+  phone: string;
+  country: string;
+  city: string;
+  accNo: string;
+  bank: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  sponsorId: number;
 }

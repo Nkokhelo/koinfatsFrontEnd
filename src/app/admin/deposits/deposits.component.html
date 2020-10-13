@@ -5,19 +5,86 @@
   <thead>
     <tr>
       <td>#</td>
+      <td>Investor</td>
       <td>Amount</td>
-      <td>Investment Date</td>
+      <td>Date</td>
       <td>Status</td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let i of $deposits| async">
       <td>#{{ i.refNo }}</td>
+      <td>{{ i.investor.name }} {{ i.investor.surname}}</td>
       <td>{{ i.amount | currency:"USD" }}</td>
       <td>{{ i.depositDate | date: "dd MMMM yyyy"}}</td>
       <td>
         <span class="badge badge-pill badge-{{ badgeBg.get(state[i.state]) }}"> {{state[i.state] }}</span> 
       </td>
+      <td>
+        <button class="btn btn-sm btn-primary" (click)="openModal(template, i)">View</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+
+
+<ng-template #template>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left">
+        Deposit #{{deposit.refNo}} 
+        <span class="badge badge-pill badge-{{badgeBg.get(state[deposit.state])}}">{{state[deposit.state]}}</span> 
+      </h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              Investor 
+            </div>
+            <div class="col-6">
+               {{deposit.investor.name}} {{deposit.investor.surname}} 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              Amount 
+            </div>
+            <div class="col-6">
+               {{deposit.amount| currency: "USD" }} 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              Date 
+            </div>
+            <div class="col-6">
+               {{deposit.depositDate| date: "dd MMMM yyyy" }} 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Proof of Payment 
+            </div>
+            <div class="col-12">
+              <img [src]="proofOfPayment" class="img-fluid" alt="Responsive image">
+            </div>
+          </div>
+
+        </div>
+      </div> 
+    </div>
+    <div *ngIf="state[deposit.state] =='Pending'" class="modal-footer">
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-danger mr-1" (click)="decline()">Decline</button>
+          <button type="submit" class="btn btn-primary" (click)="approve()">Approve</button>
+        </div>
+      </div>
+    </div>
+</ng-template>

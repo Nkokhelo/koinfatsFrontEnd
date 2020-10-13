@@ -15,6 +15,13 @@ export class DepositService {
     return this.http.post(`${this.hostUrl}/invest`, deposit);
   }
 
+  changeState(id: number, state: string) {
+    let dep : DepositDto = new DepositDto();
+    dep.Id = id;
+    dep.State = state;
+    return this.http.post(`${this.hostUrl}/respond`, dep);
+  }
+
   getByInvestor(id: number) {
     return this.http.get<Deposit[]>(`${this.hostUrl}/investor/${id}`);
   }

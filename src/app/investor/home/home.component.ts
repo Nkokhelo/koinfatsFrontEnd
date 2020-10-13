@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       (d) => {
         console.log(d);
         this.hasInvestments = d.length <= 0;
-        this._toaster.success('Welcome to koinfast')
+        // this._toaster.success('Welcome to koinfast')
       },
       (e) => {
         this.hasInvestments = false;
