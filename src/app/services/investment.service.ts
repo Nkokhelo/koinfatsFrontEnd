@@ -22,6 +22,15 @@ export class InvestmentService {
 
     return this._http.get<Investment[]>(this.serverUrl+"/investor/"+investorId);
   }
+  investments() {
+    const user:currentUser = JSON.parse(localStorage.getItem("currentUser"))
+    console.log(user);
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .append('Authorization', 'Bearer '+user.token);
+
+    return this._http.get<Investment[]>(this.serverUrl);
+  }
 
   allPackages() {
     return this._http.get<Package[]>(environment.apiUrl+"package");

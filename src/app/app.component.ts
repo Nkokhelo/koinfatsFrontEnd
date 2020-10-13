@@ -20,6 +20,7 @@ export class AppComponent {
           : r['url'].includes('/investor/')
           ? 'investor'
           : 'home';
+          console.log(this.routerUrl)
       }
     });
 

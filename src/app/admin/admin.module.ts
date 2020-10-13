@@ -7,12 +7,18 @@ import { InvestorsComponent } from './investors/investors.component';
 import { InvestmentsComponent } from './investments/investments.component';
 import { HomeComponent } from './home/home.component';
 import { DepositsComponent } from './deposits/deposits.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [AdminComponent, InvestorsComponent, InvestmentsComponent, HomeComponent, DepositsComponent],
   imports: [
-    // CommonModule, 
-    AdminRoutingModule
+    CommonModule, 
+    AdminRoutingModule,
+    BsDropdownModule.forRoot(),
+    CollapseModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   exports: [AdminComponent],
 })

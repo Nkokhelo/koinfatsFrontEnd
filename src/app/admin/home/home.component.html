@@ -1,0 +1,27 @@
+
+<h4 class="pt-2 pb-2">HOME</h4>
+
+<table class="table table-striped pt-5">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Amount</td>
+      <td>Return</td>
+      <td>Investment Date</td>
+      <td>Mature Date</td>
+      <td>State</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of $investments">
+      <td>{{ i.investmentNo }}</td>
+      <td>{{ i.amount }}</td>
+      <td>{{ i.payback }}</td>
+      <td>{{ i.startDate}}</td>
+      <td>{{ i.endDate }}</td>
+      <td>
+        <span class="badge badge-pill badge-{{ badgeBg.get(state[i.state]) }}">{{state[i.state]}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
