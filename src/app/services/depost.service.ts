@@ -18,4 +18,11 @@ export class DepositService {
   getByInvestor(id: number) {
     return this.http.get<Deposit[]>(`${this.hostUrl}/investor/${id}`);
   }
+
+  depositsByStatus(status:string) {
+    return this.http.get<Deposit[]>(`${this.hostUrl}/status/${status}`);
+  }
+  allDeposits() {
+    return this.http.get<Deposit[]>(`${this.hostUrl}/all`);
+  }
 }

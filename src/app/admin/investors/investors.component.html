@@ -1,1 +1,27 @@
-<p>investors works!</p>
+
+<h4 class="pt-2 pb-2">INVESTORS</h4>
+
+<table class="table table-striped pt-5">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Country</td>
+      <td>City</td>
+      <td>Bank Account</td>
+      <td>Bank</td>
+      <td>Invested</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of $investors| async">
+      <td>{{ i.name }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.country }}</td>
+      <td>{{ i.city}}</td>
+      <td>{{ i.accNo }}</td>
+      <td>{{ i.bank }}</td>
+      <td>{{ i.invested | currency:"USD" }}</td>
+    </tr>
+  </tbody>
+</table>

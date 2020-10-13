@@ -38,3 +38,14 @@
 .inner-body {
   overflow-y: scroll;
 }
+
+.badge.counter {
+  font-size:10px !important;
+  border-radius: 50%;
+  width:15px;
+  height: 15px;
+  top: -6px;
+  left:-5px;
+  padding: 2px 3px 2px 3px;
+  position: relative;
+}

@@ -29,7 +29,7 @@ export class InvestmentService {
     .set('Content-Type', 'application/json')
     .append('Authorization', 'Bearer '+user.token);
 
-    return this._http.get<Investment[]>(this.serverUrl);
+    return this._http.get<Investment[]>(this.serverUrl+"/all");
   }
 
   allPackages() {
