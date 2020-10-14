@@ -21,12 +21,12 @@ $enable-rounded: false;
 
 html {
   min-height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .btn-primary{

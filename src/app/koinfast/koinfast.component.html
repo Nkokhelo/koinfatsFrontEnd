@@ -1,11 +1,9 @@
 <div class="container-fluid  pl-0 pr-0">
   <app-navbar></app-navbar>
-  <div class="col-12 pl-0 pr-0">
-    <div class="container h-100">
-      <router-outlet #o="outlet"></router-outlet>
+  <div class="row">
+    <router-outlet #o="outlet"></router-outlet>
+    <div class="col-12 pr-0 pl-0">
+      <app-footer></app-footer>
     </div>
-  </div>
-  <div class="col-12 pr-0 pl-0">
-    <app-footer></app-footer>
   </div>
 </div>
