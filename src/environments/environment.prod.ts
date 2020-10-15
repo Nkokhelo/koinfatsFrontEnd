@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://www.koinfast.com/',
+  apiUrl: 'https://api.koinfast.com/',
 };

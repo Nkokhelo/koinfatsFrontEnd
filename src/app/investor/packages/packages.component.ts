@@ -79,6 +79,7 @@ export class PackagesComponent implements OnInit {
     if (this.packageForm.valid) {
       let deposit: DepositDto = this.packageForm.value;
       deposit.InvestorId = this._accountService.currentUserValue.id;
+      deposit.Token = this._accountService.currentUserValue.walletToken;
       console.log(deposit);
 
       this._depositService.makeDeposit(deposit).subscribe(

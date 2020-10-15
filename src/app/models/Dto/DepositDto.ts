@@ -5,4 +5,5 @@ export class DepositDto{
   InvestorId : number;
   Id:number ;
   State: string;
+  Token: string;
 }

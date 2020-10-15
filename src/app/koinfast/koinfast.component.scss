@@ -2,6 +2,10 @@
   font-family: robotoM;
   src: url("../../assets/fonts/Roboto-Medium.ttf");
 }
+@font-face {
+  font-family: robotoL;
+  src: url("../../assets/fonts/Roboto-Light.ttf");
+}
 p,
 a,
 div,
@@ -10,3 +14,13 @@ button {
   font-size: 13px;
   font-weight: 500;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family:robotoL;
+}
+
