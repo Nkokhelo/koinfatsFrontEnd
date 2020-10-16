@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <td>#</td>
-      <td>Amount</td>
+      <td>Invested Amount</td>
       <td>Return</td>
       <td>Investment Date</td>
       <td>Mature Date</td>
@@ -21,10 +21,10 @@
   <tbody>
     <tr *ngFor="let i of $investments | async">
       <td>{{ i.investmentNo }}</td>
-      <td>{{ i.amount }}</td>
+      <td>{{ i.amount | currency: "USD" }}</td>
       <td>{{ i.payback }}</td>
-      <td>{{ i.startDate}}</td>
-      <td>{{ i.endDate }}</td>
+      <td>{{ i.startDate | date: "dd MMMM yyyy"}}</td>
+      <td>{{ i.endDate | date: "dd MMMM yyyy"}}</td>
       <td>
         <span class="badge badge-pill badge-{{ badgeBg.get(state[i.state]) }}">{{state[i.state]}}</span>
       </td>

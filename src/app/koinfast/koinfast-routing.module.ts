@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PackagesComponent } from '../investor/packages/packages.component';
+import { PackagesComponent } from './packages/packages.component';
 import { HomeComponent } from './home/home.component';
 
 import { KoinfastComponent } from './koinfast.component';
