@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 $white: #fff !default;
 $gray-100: #f1f4f9 !default;
@@ -31,4 +32,21 @@ body {
 
 .btn-primary{
   color: #fff;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.loader {
+  border: 3px solid transparent; /* Light grey */
+  border-top: 3px solid #ffffff; /* Blue */
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

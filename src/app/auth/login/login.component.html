@@ -1,28 +1,30 @@
 <div class="row justify-content-center  align-middle login_container pt-5 mt-5">
-  <div class="col-md-5 col-sm-8 col-10 auth-bg pt-3 pb-3 mt-5 mt-sm-2 mt-md-0">
+  <div class="col-md-5 col-xl-4 col-sm-8 col-10 auth-bg pt-3 pb-3 mt-5 mt-sm-2 mt-md-0">
     <h3 class="text-center pb-3">MEMBER LOGIN</h3>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-group">
         <label for="exampleInputEmail1">Username</label>
         <input type="email" class="form-control" placeholder="Enter email" formControlName="username">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <div class="pt-2" *ngIf="userName.status == 'INVALID' && userName.touched">
-          <p *ngIf="userName.errors.required" class="text-danger">Username is required</p>
-          <p *ngIf="userName.errors.pattern" class="text-danger">Invalid username was provided</p>
-          <p *ngIf="userName.errors.minlength && userName.errors.pattern == null" class="text-danger">
+        <div class="pt-0" *ngIf="userName.status == 'INVALID' && userName.touched">
+          <small *ngIf="userName.errors.required" class="text-danger">Username is required</small>
+          <small *ngIf="userName.errors.pattern" class="text-danger">Invalid username was provided</small>
+          <small *ngIf="userName.errors.minlength && userName.errors.pattern == null" class="text-danger">
             Your name must be atleast {{userName.errors.minlength.requiredLength}} characters
-          </p>
+          </small>
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" placeholder="Password" formControlName="password">
-        <div class="pt-2" *ngIf="passWord.status == 'INVALID' && passWord.touched">
-          <p *ngIf="passWord.errors.required" class="text-danger">Password is required</p>
+        <div class="pt-0" *ngIf="passWord.status == 'INVALID' && passWord.touched">
+          <small *ngIf="passWord.errors.required" class="text-danger">Password is required</small>
         </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary mt-4 w-100">LOGIN</button>
+        <button type="submit" class="btn btn-primary mt-4 w-100" [disabled]="isLoading">
+          <div *ngIf="isLoading" class="loader"></div>
+          <div *ngIf="!isLoading">LOGIN</div>
+        </button>
       </div>
       <div class="form-group">
         <div class="row justify-content-center">

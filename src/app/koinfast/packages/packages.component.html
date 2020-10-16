@@ -1,0 +1,28 @@
+
+<div class="col-12">
+  <div class="row">
+    <div class="container">
+      <h4 class="pt-4 pb-2">Packages</h4>
+      
+      <div class="row pt-5 justify-content-between">
+        <div class="col-12 col-md-5 col-lg-4" *ngFor="let p of $packages | async, let i = index" >
+          <div class="card shadow-sm pt-3 pl-3 pr-3 pb-0 m-1 mb-3 pb-0 mb-5 w-100 rounded-0 border border-primary border-bottom-0 border-left-0 border-right-0">
+            <h5 class="text-center">{{ p.name }}</h5>
+            <div class="row">
+              <div class="col-12">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-center">{{ (p.price > 0) ? "$"+p.price+".00" : "min : $ 50.00" }}</li>
+                  <li class="list-group-item text-center">{{ p.duration < 365 ? "Package" : "Shares" }}</li>
+                  <li class="list-group-item text-center">{{ (p.duration==15) ? "15 working days"  : (p.duration==30)? "30 days" : "12 Months" }}</li>
+                </ul>
+              </div>
+              <div class="col-12 pt-3 ml-0 mr-0 pl-0 pr-0">
+                <button class="btn btn-primary w-100" >EARN {{ (p.duration == 15) ? "50%": (p.duration == 30)? "100%" : "$"+p.return+".00"  }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

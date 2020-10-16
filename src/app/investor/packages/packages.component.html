@@ -2,18 +2,21 @@
 <h4 class="pt-4 pb-2">CHOOSE YOUR PACKAGE</h4>
 
 <div class="row pt-5 justify-content-between">
-  <div class="col-12 col-sm-5 col-md-3 shadow-sm p-3 m-1 mb-3 pb-3 mb-5 card" *ngFor="let p of $packages | async, let i = index" >
-    <h5>{{ p.name }}</h5>
-    <div class="row">
-      <div class="col-12">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ (p.price > 0) ? "$"+p.price+".00" : "min : $ 50.00" }}</li>
-          <li class="list-group-item">{{ p.packageType }}</li>
-          <li class="list-group-item">{{ (p.duration == 15) ? "50%": (p.duration == 30)? "100%" : "$"+p.return+".00"  }}</li>
-        </ul>
-      </div>
-      <div class="col-12 pt-3">
-        <button class="btn btn-outline-primary w-100" (click)="openModal(template, p)">BUY</button>
+  <div class="col-12 col-md-5 col-lg-4" *ngFor="let p of $packages | async, let i = index" >
+    <div class="card shadow-sm pt-3 pl-3 pr-3 pb-0 m-1 mb-3 pb-0 mb-5 w-100 rounded-0 border border-primary border-bottom-0 border-left-0 border-right-0">
+      <h5 class="text-center">{{ p.name }}</h5>
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">{{ (p.price > 0) ? "$"+p.price+".00" : "min : $ 50.00" }}</li>
+            <li class="list-group-item text-center">{{ p.duration < 365 ? "Package" : "Shares" }}</li>
+            <li class="list-group-item text-center">{{ (p.duration==15) ? "15 working days"  : (p.duration==30)? "30 days" : "12 Months" }}</li>
+            <li class="list-group-item text-center">{{ (p.duration == 15) ? "50%": (p.duration == 30)? "100%" : "$"+p.return+".00"  }}</li>
+          </ul>
+        </div>
+        <div class="col-12 pt-3 ml-0 mr-0 pl-0 pr-0">
+          <button class="btn btn-primary w-100" (click)="openModal(template, p)">BUY</button>
+        </div>
       </div>
     </div>
   </div>
@@ -38,7 +41,7 @@
             </div> -->
           </div>
           <div class="form-group">
-            <label for="Amount">Amount</label>
+            <label for="Amount">Amount($)</label>
             <input type="text"  class="form-control" formControlName="Amount">
             <div class="pt-2" *ngIf="Amount.status == 'INVALID' && Amount.touched">
               <p *ngIf="Amount.errors.min" class="text-danger">Amount for {{  Name.value }} must be more than $ {{Amount.errors.min.min}}.00</p>
@@ -46,7 +49,7 @@
           </div>
           <div class="form-group">
             <label for="DepositProof">Proof</label>
-            <input type="file" class="form-control" (change)="onFileChange($event)">
+            <input type="file" class="form-control border-0" (change)="onFileChange($event)">
             <div class="pt-2" *ngIf="DepositProof.status == 'INVALID' && depositClicked">
               <p *ngIf="DepositProof.errors.required" class="text-danger">Please upload proof of payment</p>
             </div>
@@ -57,8 +60,11 @@
     <div class="modal-footer">
       <div class="row">
         <div class="col-12">
-          <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
-          <button type="submit" class="btn btn-primary">Deposit</button>
+          <button type="button" class="btn btn-default"  style="width: 50%" (click)="modalRef.hide()" [disabled]="isLoading">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="width: 50%" [disabled]="isLoading">
+            <div *ngIf="isLoading" class="loader"></div>
+            <div *ngIf="!isLoading">Deposit</div>
+          </button>
         </div>
       </div>
     </div>

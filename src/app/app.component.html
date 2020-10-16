@@ -1,5 +1,7 @@
+
+<ngx-loading-bar ref="router" color="{{ (routerUrl == 'home')? '#182739': '#ffffff'}}" height="3px"></ngx-loading-bar>
+
 <app-auth *ngIf="routerUrl =='auth'"></app-auth>
 <app-admin *ngIf="routerUrl =='admin'"></app-admin>
 <app-investor *ngIf="routerUrl =='investor'"></app-investor>
-
 <app-koinfast *ngIf="routerUrl == 'home'"></app-koinfast>

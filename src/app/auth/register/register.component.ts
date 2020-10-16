@@ -6,6 +6,7 @@ import { investorTitle } from 'src/app/Enums/investorTitle';
 import { Investor } from 'src/app/models/Investor';
 import { AccountService } from 'src/app/services/account.service';
 import { ValidationService } from 'src/app/services/validation.service';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,8 @@ import { ValidationService } from 'src/app/services/validation.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  isLoading: boolean;
+  isSubmitted: boolean;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -21,7 +24,8 @@ export class RegisterComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private _toastr: ToastrService,
-    private _validationService: ValidationService
+    private _validationService: ValidationService,
+    private _loadingBar : LoadingBarService
   ) {
     this.registerForm = this._formBuilder.group({
       Title: ['', Validators.required],
@@ -50,21 +54,26 @@ export class RegisterComponent implements OnInit {
   }
 
   createAccount() {
-
-    console.log(this.registerForm);
+    const state = this._loadingBar.useRef('router');
+    this.isSubmitted = true; 
     if (this.registerForm.valid) {
+      state.start();
+      this.isLoading = true;
       const val = this.registerForm.value;
       var investor: Investor = val;
       this._accountService.register(investor).subscribe(
         (u) => {
           console.log(u);
+          state.complete();
 
           if (u.token && u.roleName) {
             this._accountService.navigateUser(u);
           }
         },
         (e) => {
+          this.isLoading = false;
           console.log(e);
+          state.complete();
           this._toastr.error(e.message);
         }
       );

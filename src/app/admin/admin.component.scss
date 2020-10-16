@@ -37,10 +37,12 @@
   overflow-y: scroll;
   // min-height: 100vh;
   // max-height: 100vh;
+  overflow-x: hidden;
+
   height: 100vh;
 }
 .inner-body {
-  // overflow-y: scroll;
+  overflow-x: hidden;
   min-height: 80%;
 }
 

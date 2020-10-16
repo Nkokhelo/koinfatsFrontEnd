@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -32,7 +33,7 @@ export class PackagesComponent implements OnInit {
   modalRef: BsModalRef;
   packageForm: FormGroup;
   depositClicked: boolean = false;
-
+  isLoading: boolean;
   constructor(
     private _packages: InvestmentService,
     private _modalService: BsModalService,
@@ -40,7 +41,8 @@ export class PackagesComponent implements OnInit {
     private _depositService: DepositService,
     private cd: ChangeDetectorRef,
     private _accountService: AccountService,
-    private _toaster: ToastrService
+    private _toaster: ToastrService,
+    private _loadingBar : LoadingBarService
   ) {
     this.packageForm = this._formBuilder.group({
       Name: [{ value: '', disabled: true }],
@@ -76,12 +78,14 @@ export class PackagesComponent implements OnInit {
 
   deposit() {
     this.depositClicked = true;
+    const state = this._loadingBar.useRef('router');
+
     if (this.packageForm.valid) {
+      this.isLoading = true;
       let deposit: DepositDto = this.packageForm.value;
       deposit.InvestorId = this._accountService.currentUserValue.id;
       deposit.Token = this._accountService.currentUserValue.walletToken;
-      console.log(deposit);
-
+      state.start();
       this._depositService.makeDeposit(deposit).subscribe(
         (res: customResponse) => {
           if (res.success) {
@@ -89,8 +93,15 @@ export class PackagesComponent implements OnInit {
           } else {
             this._toaster.error(res.message);
           }
+          console.log(res);
+          state.complete();
         },
-        (err) => {}
+        (err) => {
+          console.log(err);
+          this.isLoading = false;
+          this._toaster.error('Error while making your deposit');
+          state.complete();
+        }
       );
     }
   }

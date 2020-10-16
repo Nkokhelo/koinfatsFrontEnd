@@ -83,7 +83,10 @@
       <div class="row">
         <div class="col-12">
           <button type="button" class="btn btn-danger mr-1" (click)="decline()">Decline</button>
-          <button type="submit" class="btn btn-primary" (click)="approve()">Approve</button>
+          <button type="submit" class="btn btn-primary" (click)="approve()" [disabled]="isLoading">
+            <div *ngIf="isLoading" class="loader"></div>
+            <div *ngIf="!isLoading">Approve</div>
+          </button>
         </div>
       </div>
     </div>

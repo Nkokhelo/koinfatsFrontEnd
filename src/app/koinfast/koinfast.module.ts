@@ -8,6 +8,7 @@ import { KoinfastComponent } from './koinfast.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { PackagesComponent } from './packages/packages.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    PackagesComponent,
   ],
   imports: [
     CommonModule,

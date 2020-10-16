@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44301/',
+  // apiUrl: 'https://localhost:44301/',
+  apiUrl: 'https://api.koinfast.com/',
 };
 
 /*

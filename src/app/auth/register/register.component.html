@@ -1,11 +1,11 @@
-<div class="row justify-content-center  align-middle login_container pt-5 mt-5">
-  <div class="col-md-10 col-sm-8 col-10 auth-bg pt-3 pb-3 mt-5 mt-sm-2 mt-md-0">
+<div class="row justify-content-center  align-middle login_container pt-5 mt-5 pb-5 mb-5">
+  <div class="col-md-10 col-lg-10 col-xl-8 col-11 auth-bg pt-3 pb-3 mt-5 mt-sm-2 mt-md-0">
     <h3 class="text-center pb-3">GET STARTED</h3>
     <form [formGroup]="registerForm" (ngSubmit)="createAccount()">
 
       <div class="col-12">
         <div class="row">
-          <div class="form-group col-2">
+          <div class="form-group col-6 col-sm-4 col-md-4 col-lg-2">
             <label for="Title">Title </label>
             <select name="Title" class="form-control" formControlName="Title">
               <option value="0">Mr</option>
@@ -13,36 +13,36 @@
               <option value="2">Miss</option>
               <option value="3">Mrs</option>
             </select>
-            <div class="pt-2" *ngIf="Title.status == 'INVALID' && Title.touched">
-              <p *ngIf="Title.errors.required" class="text-danger">Title is required</p>
-              <p *ngIf="Title.errors.pattern" class="text-danger">Invalid Title was provided</p>
-              <p *ngIf="Title.errors.minlength && Title.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Title.status == 'INVALID' && Title.touched)">
+              <small *ngIf="Title?.errors?.required" class="text-danger">Title is required</small>
+              <small *ngIf="Title?.errors?.pattern" class="text-danger">Invalid Title was provided</small>
+              <small *ngIf="Title?.errors?.minlength && Title.errors.pattern == null" class="text-danger">
                 Your name must be atleast {{Title.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-sm-8 col-md-8 col-lg-6">
             <label for="Name">Name </label>
             <input type="Name" class="form-control" id="Name" placeholder="Name" formControlName="Name" />
-            <div class="pt-2" *ngIf="Name.status == 'INVALID' && Name.touched">
-              <p *ngIf="Name.errors.required" class="text-danger">Name is required</p>
-              <p *ngIf="Name.errors.pattern" class="text-danger">Invalid name was provided</p>
-              <p *ngIf="Name.errors.minlength && Name.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Name.status == 'INVALID' && Name.touched)">
+              <small *ngIf="Name?.errors?.required" class="text-danger">Name is required</small>
+              <small *ngIf="Name?.errors?.pattern" class="text-danger">Invalid name was provided</small>
+              <small *ngIf="Name?.errors?.minlength && Name.errors.pattern == null" class="text-danger">
                 Your name must be at least {{Name.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-4">
+          <div class="form-group col-12 col-sm-8 col-md-8 col-lg-4">
             <label for="Surname">Surname </label>
             <input type="Surname" class="form-control" id="surname" placeholder="Surname" formControlName="Surname" />
-            <div class="pt-2" *ngIf="Surname.status == 'INVALID' && Surname.touched">
-              <p *ngIf="Surname.errors.required" class="text-danger">Surname is required</p>
-              <p *ngIf="Surname.errors.pattern" class="text-danger">Invalid Surname was provided</p>
-              <p *ngIf="Surname.errors.minlength && Surname.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Surname.status == 'INVALID' && Surname.touched)">
+              <small *ngIf="Surname?.errors?.required" class="text-danger">Surname is required</small>
+              <small *ngIf="Surname?.errors?.pattern" class="text-danger">Invalid Surname was provided</small>
+              <small *ngIf="Surname?.errors?.minlength && Surname.errors.pattern == null" class="text-danger">
                 Your surname must be at least {{Surname.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
         </div>
@@ -51,27 +51,27 @@
       <div class="col-12">
         <div class="row">
 
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-sm-10 col-md-6">
             <label for="Email">Email </label>
             <input type="text" class="form-control" id="Email" placeholder="Email" formControlName="Email" />
-            <div class="pt-2" *ngIf="Email.status == 'INVALID' && Email.touched">
-              <p *ngIf="Email.errors.required" class="text-danger">Email is required</p>
-              <p *ngIf="Email.errors.pattern" class="text-danger">Invalid Email was provided</p>
-              <p *ngIf="Email.errors.minlength && Email.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Email.status == 'INVALID' && Email.touched)">
+              <small *ngIf="Email?.errors?.required" class="text-danger">Email is required</small>
+              <small *ngIf="Email?.errors?.pattern" class="text-danger">Invalid Email was provided</small>
+              <small *ngIf="Email?.errors?.minlength && Email.errors.pattern == null" class="text-danger">
                 Your email must be at least {{Email.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-sm-6 col-md-6">
             <label for="Phone">Phone </label>
             <input type="Phone" class="form-control" id="Phone" placeholder="Phone" formControlName="Phone" />
-            <div class="pt-2" *ngIf="Phone.status == 'INVALID' && Phone.touched">
-              <p *ngIf="Phone.errors.required" class="text-danger">Phone is required</p>
-              <p *ngIf="Phone.errors.pattern" class="text-danger">Invalid Phone was provided</p>
-              <p *ngIf="Phone.errors.minlength && Phone.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Phone.status == 'INVALID' && Phone.touched)">
+              <small *ngIf="Phone?.errors?.required" class="text-danger">Phone is required</small>
+              <small *ngIf="Phone?.errors?.pattern" class="text-danger">Invalid Phone was provided</small>
+              <small *ngIf="Phone?.errors?.minlength && Phone.errors.pattern == null" class="text-danger">
                 Your phone must be at least {{Phone.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
         </div>
@@ -80,27 +80,27 @@
       <div class="col-12">
         <div class="row">
 
-          <div class="form-group col-5">
+          <div class="form-group col-12 col-sm-8  col-md-5">
             <label for="Country">Country </label>
             <input type="Country" class="form-control" id="Country" placeholder="Country" formControlName="Country">
-            <div class="pt-2" *ngIf="Country.status == 'INVALID' && Country.touched">
-              <p *ngIf="Country.errors.required" class="text-danger">Country is required</p>
-              <p *ngIf="Country.errors.pattern" class="text-danger">Invalid Country was provided</p>
-              <p *ngIf="Country.errors.minlength && Country.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Country.status == 'INVALID' && Country.touched)">
+              <small *ngIf="Country?.errors?.required" class="text-danger">Country is required</small>
+              <small *ngIf="Country?.errors?.pattern" class="text-danger">Invalid Country was provided</small>
+              <small *ngIf="Country?.errors?.minlength && Country.errors.pattern == null" class="text-danger">
                 County must be at least {{Country.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-7">
+          <div class="form-group col-12 col-sm-10 col-md-7">
             <label for="City">City </label>
             <input type="City" class="form-control" id="City" placeholder="City" formControlName="City">
-            <div class="pt-2" *ngIf="City.status == 'INVALID' && City.touched">
-              <p *ngIf="City.errors.required" class="text-danger">City is required</p>
-              <p *ngIf="City.errors.pattern" class="text-danger">Invalid City was provided</p>
-              <p *ngIf="City.errors.minlength && City.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (City.status == 'INVALID' && City.touched)">
+              <small *ngIf="City?.errors?.required" class="text-danger">City is required</small>
+              <small *ngIf="City?.errors?.pattern" class="text-danger">Invalid City was provided</small>
+              <small *ngIf="City?.errors?.minlength && City.errors.pattern == null" class="text-danger">
                 City must be at least {{City.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
@@ -109,27 +109,27 @@
 
       <div class="col-12">
         <div class="row">
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-sm-6 col-md-6">
             <label for="AccNo">Account No </label>
             <input type="text" class="form-control" id="AccountNo" placeholder="Account No" formControlName="AccNo">
-            <div class="pt-2" *ngIf="AccNo.status == 'INVALID' && AccNo.touched">
-              <p *ngIf="AccNo.errors.required" class="text-danger">Account No is required</p>
-              <p *ngIf="AccNo.errors.pattern" class="text-danger">Invalid Account No was provided</p>
-              <p *ngIf="AccNo.errors.minlength && AccNo.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (AccNo.status == 'INVALID' && AccNo.touched)">
+              <small *ngIf="AccNo?.errors?.required" class="text-danger">Account No is required</small>
+              <small *ngIf="AccNo?.errors?.pattern" class="text-danger">Invalid Account No was provided</small>
+              <small *ngIf="AccNo?.errors?.minlength && AccNo.errors.pattern == null" class="text-danger">
                 Account No must be at least {{AccNo.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-sm-6 col-md-6">
             <label for="Bank">Bank </label>
             <input type="text" class="form-control" id="Bank" placeholder="Bank" formControlName="Bank">
-            <div class="pt-2" *ngIf="Bank.status == 'INVALID' && Bank.touched">
-              <p *ngIf="Bank.errors.required" class="text-danger">Bank is required</p>
-              <p *ngIf="Bank.errors.pattern" class="text-danger">Invalid Bank was provided</p>
-              <p *ngIf="Bank.errors.minlength && Bank.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Bank.status == 'INVALID' && Bank.touched)">
+              <small *ngIf="Bank?.errors?.required" class="text-danger">Bank is required</small>
+              <small *ngIf="Bank?.errors?.pattern" class="text-danger">Invalid Bank was provided</small>
+              <small *ngIf="Bank?.errors?.minlength && Bank.errors.pattern == null" class="text-danger">
                 Bank name must be at least {{Bank.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
 
           </div>
@@ -139,26 +139,26 @@
 
       <div class="col-12">
         <div class="row">
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-md-6">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password" formControlName="Password">
-            <div class="pt-2" *ngIf="Password.status == 'INVALID' && Password.touched">
-              <p *ngIf="Password.errors.required" class="text-danger">Password is required</p>
-              <p *ngIf="Password.errors.pattern" class="text-danger">Invalid Password was provided</p>
-              <p *ngIf="Password.errors.minlength && Password.errors.pattern == null" class="text-danger">
+            <div class="pt-0" *ngIf="isSubmitted || (Password.status == 'INVALID' && Password.touched)">
+              <small *ngIf="Password?.errors?.required" class="text-danger">Password is required</small>
+              <small *ngIf="Password?.errors?.pattern" class="text-danger">Invalid Password was provided</small>
+              <small *ngIf="Password?.errors?.minlength && Password.errors.pattern == null" class="text-danger">
                 Your password must be at least {{Password.errors.minlength.requiredLength}} characters
-              </p>
+              </small>
             </div>
           </div>
 
-          <div class="form-group col-6">
+          <div class="form-group col-12 col-md-6">
             <label for="exampleInputPassword1">Confirm Password</label>
             <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password"
               formControlName="ConfirmPassword">
-            <div class="pt-2" *ngIf="ConfirmPassword.status == 'INVALID' && ConfirmPassword.touched">
-              <p *ngIf="ConfirmPassword.errors.required" class="text-danger">Confirm password is required</p>
-              <p *ngIf="ConfirmPassword.errors.passwordMismatch" class="text-danger">Confirm password does not match
-                password</p>
+            <div class="pt-0" *ngIf="isSubmitted || (ConfirmPassword.status == 'INVALID' && ConfirmPassword.touched)">
+              <small *ngIf="ConfirmPassword?.errors?.required" class="text-danger">Confirm password is required</small>
+              <small *ngIf="ConfirmPassword?.errors?.passwordMismatch" class="text-danger">Confirm password does not match
+                password</small>
             </div>
           </div>
         </div>
@@ -169,8 +169,11 @@
         <div class="col-12">
           <div class="row justify-content-center">
             <div class="col-12 col-md-4">
-              <button type="submit" class="btn btn-primary mt-4 w-md-50 w-100">CREATE
-                ACCOUNT</button>
+
+              <button type="submit" class="btn btn-primary mt-4 w-md-50 w-100" [disabled]="isLoading">
+                <div *ngIf="isLoading" class="loader"></div>
+                <div *ngIf="!isLoading">CREATE ACCOUNT</div>
+              </button>
             </div>
           </div>
         </div>

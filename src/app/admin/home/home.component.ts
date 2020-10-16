@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs/internal/Observable';
 import { InvestmentState } from 'src/app/Enums/investmentState';
 import { Investment } from 'src/app/models/Investments';
+import { currentUser } from 'src/app/models/User';
 import { AccountService } from 'src/app/services/account.service';
 import { badgeColor } from 'src/app/services/badge.service';
 import { InvestmentService } from 'src/app/services/investment.service';
@@ -19,15 +20,14 @@ export class HomeComponent implements OnInit {
   hasInvestments: boolean = false;
   state: any = InvestmentState;
   badgeBg : Map<string, string> = this._colorBg.color; 
+  user: currentUser = JSON.parse(localStorage.getItem("currentUser"));
   constructor(
     private _investmentService: InvestmentService,
-    private _accountService: AccountService,
     private _toaster: ToastrService,
     private _colorBg: badgeColor
   ) {}
   
   ngOnInit(): void {
-    var user = this._accountService.currentUserValue;
     this.$investments = this._investmentService.investments();
     this.$investments.subscribe(
       (d) => {
